@@ -1,1 +1,2 @@
-# Data_Course_BRYANT
+# Data_Course_BRYANThello
+This README file contains information about my uploaded assignments
