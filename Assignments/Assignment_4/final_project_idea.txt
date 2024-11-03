@@ -1,0 +1,8 @@
+Describe your idea for a data analysis final project
+
+	For my final project, I am going to analyze various spatial characteristics of Rock Glacier in Utah. I am going to focus on one geologic quad and use Rock glaciers that I have plotted for my research project.
+	Some of the characteristics that I would like to analyze are slope, aspect, area, length, width, and elevation. I would like to see if there are relationships between location, spatial characteristics and rock glacier size.
+
+Describe the sort of data you will use, potential sources, and what the data might look like
+	I will need two types of data for this project. Spatial data in the form of either shapefiles or kmz files of the rock glacier locations as polygons. I will also create spreadsheet data of the spatial characteristics such as area, elevation, and slope aspect. 
+	The data will have mostly numeric data, but some data will be characters/factors. Much of the data I will extract from the spatial information of the shapefile polygons. 
