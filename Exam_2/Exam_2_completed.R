@@ -104,9 +104,8 @@ ggsave("BRYANT_Plot_3.png", width=8, height=6, dpi=300)
 
 ecuador_2020 <- data.frame(Year = 2020, CountryName = "Ecuador", Continent = "Americas")
 
-ecuador_2020$predicted_U5MR <- predict(mod1, newdata = ecuador_2020)
-ecuador_2020$predicted_U5MR <- predict(mod2, newdata = ecuador_2020)
 ecuador_2020$predicted_U5MR <- predict(mod3, newdata = ecuador_2020)
+View(ecuador_2020)
 #I choose mod3
 difference <- abs(ecuador_2020$predicted_U5MR - 13)
 print(difference)
