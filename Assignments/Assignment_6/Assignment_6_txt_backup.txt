@@ -1,21 +1,9 @@
----
-output: 
-html_document:
-  number_sections=TRUE
-pagetitle: Assignment_6
----
-
 # Assignment 6
-
-```{r}
 
 library(tidyverse)
 data_6<-read.csv("/Users/bryan/OneDrive/Documents/BIOL_3100/Data_Course_BRYANT/Assignments/Assignment_6/BioLog_Plate_Data.csv")
-```
 
 #1. Clean this data into tidy (long) form
-
-```{r}
 View(data_6)
 
 data_6_long <- pivot_longer(
@@ -28,20 +16,15 @@ View(data_6_long)
 
 data_6_long$Time <- as.numeric(gsub("Hr_", "", data_6_long$Time))
 View(data_6_long)
-```
-
 
 # 2. Create a new colum specifying whether a sample is from soil or water.
 
-```{r}
 data_new_column <- data_6_long %>%
   mutate(Sample_Type = ifelse(grepl("Water", Sample.ID, ignore.case = TRUE), "water", "soil"))
 View(data_new_column)
-```
 
 # 3. Generate a plot
 
-```{r}
 filtered <- data_new_column %>%
   filter(Dilution == 0.1)
 View(filtered)
@@ -50,10 +33,9 @@ ggplot(filtered,aes(x=Time, y=Absorbance, color=Sample_Type, group=Sample_Type))
   geom_smooth(method = "loess", se = FALSE)+
   facet_wrap(~Substrate)+
   labs(x = "Time (hours)", y = "Absorbance", title = "Absorbance over Time when Dilution is 0.1")
-```
 
 # 4. Generate animated plot
-```{r}
+
 Itaconic_acid <- data_new_column %>%
   filter(Substrate=="Itaconic Acid")
 View(Itaconic_acid)
@@ -72,7 +54,5 @@ animated_plot <- ggplot(mean_absorbance, aes(x = Time, y = Mean_Absorbance, colo
   facet_wrap(~ Dilution)+
   transition_reveal(Time)
 
+# Render the animation
 animate(animated_plot, nframes = 100, fps = 10, width = 800, height = 600)
-```
-
-

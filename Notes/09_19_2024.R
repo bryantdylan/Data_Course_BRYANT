@@ -316,3 +316,88 @@ penguins %>%
 install.packages("gapminder")
 install.packages('ggimage')  
 install.packages('gganimate')  
+install.packages('patchwork')
+install.packages('ggminder')
+
+library(gapminder)
+library(ggimage)
+library(gganimate)
+library(patchwork)
+library(ggminder)
+
+
+glimpse(gapminder)
+View(gapminder)
+df_gapminder<-gapminder
+df_gapminder
+ggplot(df_gapminder,aes(x=year, y=lifeExp, color=continent)) +
+  geom_point(aes(size=pop))+
+  facet_wrap(~continent)+
+  scale_color_viridis_d()
+
+ggsave("./CoolPlot.png", plot=p1, width=8, height=6, dpi= 300, units='cm')
+
+
+dat<-data.frame(x=1:10, y=rnorm(10))
+ggplot(dat, aes(x=x,y=y))  +
+  geom_point (size=5)+
+  geom_line()+
+  xkcdaxis(range(dat$x, range(dat$y))+
+  theme_xkcd
+  
+str(p1)
+
+p1 + theme_dark
+p1_dark<- p1 + theme_dark   
+p1 + p1_dark
+p1/p1_dark
+(p1+p1)/p1_dark  
+(p1+p1)/p1_dark +patchwork::plot_layout(guides='collect') +
+  plot_annotation('My cool plot!')
+
+p1<-ggplot(mtcars, aes (x=wt, y=mpg))+geom_point()+ ggtitle("Plot 1")
+p2<-ggplot(mtcars, aes (x=wt, y=mpg))+geom_point()+ ggtitle("Plot 2")
+p3<-ggplot(mtcars, aes (x=wt, y=mpg))+geom_point()+ ggtitle("Plot 3")
+
+(p1+p2)/p3+
+  plot_annotation('Cool Car plot', tag_levels='a')+
+  patchwork::plot_layout(guides='collect')
+
+p2<-p1 +facet_wrap(~continent)
+p1/p2
+
+p3<-ggplot(df_gapminder,aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  geom_point(aes(size=pop))+
+  scale_color_viridis_d()
+
+#gganimate turns plots into animated graphs
+df_gapminder$country %>% unique ()
+
+?transition_time
+
+p3+transition_time( time=year)
+df_gapminder$year %>% range
+
+p3+transition_time( time=year) +
+  labs(title='Year: {frame_time}')
+
+p3<-geom_text(aes(label=country))
+
+ggplot(df_gapminder,aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  geom_point(aes(size=pop))+
+  scale_color_viridis_d()+
+  geom_text(aes(label=country))
+
+df_gapminder$country %>%
+
+my_country=c('United States','China', 'Uganda', 'Vietnam')
+df_gapminder%>%
+  mutate(my_country=case_when(country %in% country))
+
+anim_save("./cool_anim.gif", animation=p4)
+
+ggsave"./cool_anim.png, width=9,height=4,dpi=300, p4"
+
+
+install.packages('leaflet')
+library(leaflet)
