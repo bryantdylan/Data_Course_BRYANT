@@ -16,6 +16,8 @@ library(tidyverse)
 # load data (wide format)
 utah = read.csv("./Utah_Religions_by_County.csv")
 
+utah = read.csv("/Users/bryan/OneDrive/Documents/BIOL_3100/Data_Course_BRYANT/Assignments/Assignment_7/Utah_Religions_by_County.csv")
+View(utah)
 # subset to only counties with buddhists observed
 buddhist = utah[utah$Buddhism.Mahayana > 0,]
 
