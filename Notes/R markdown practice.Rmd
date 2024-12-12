@@ -1,0 +1,25 @@
+---
+title: "R Markdown Practice"
+author: "Dylan Bryant"
+date: "2024-11-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ # echo=false shows result but not the code echo=true shows the code
+ #view markdown quick reference under the help tab to see r markdown code 
+#This is header 1
+#This is header 2
+#This is header 3
+
+**test**
+*test*
+ [UVU](https://my.uvu.edu/workplace/)   # creates link
+ 
+ ![image] (path to image....)
+ 
+ # you can change the format of the file created by changing the output at the top
+ # for example use rmdformats::downcute instead of html_output

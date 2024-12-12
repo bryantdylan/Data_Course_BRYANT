@@ -1,0 +1,29 @@
+#Upload responses to the following as a numbered plaintext document to Canvas:
+  #1. Are any of your predicted response values from your best model scientifically meaningless? Explain.
+## Based on the summary statistics of the best model (model6), nitrogen was found to be statistically meaningless because the p-value in the summary
+#table was greater than 0.05 which is considered insignificant. 
+
+  #2. In your plots, did you find any non-linear relationships? Do a bit of research online and give a link to at least one resource explaining how to deal with modeling non-linear relationships in R.
+# It appears that temperature and nitrogen exhibit non-linear relationships. The following websites provide information to help handle these non-linear relationships:
+#https://www.geeksforgeeks.org/non-linear-regression-in-r/
+#https://tuos-bio-data-skills.github.io/intro-stats-book/non-linear-regression-in-R.html
+#https://www.econometrics-with-r.org/8.1-a-general-strategy-for-modelling-nonlinear-regression-functions.html
+
+  #3. Write the code you would use to model the data found in “/Data/non_linear_relationship.csv” with a linear model (there are a few ways of doing this)
+non_lin<-read.csv("C:/Users/bryan/OneDrive/Documents/BIOL_3100/Data_Course_BRYANT/Data/non_linear_relationship.csv")
+View(non_lin)
+
+
+ggplot(non_lin, aes(x = predictor, y = response)) +
+  geom_point() +
+  geom_smooth(method = "loess", color = "red", se = TRUE)
+
+#model
+poly_model <- lm(response ~ poly(predictor, 2), data = data)
+summary(poly_model)
+
+quad_mod<-lm(response ~ poly(predictor, 2), data=non_lin)
+summary(quad_mod)
+
+mse_quad <- mean(residuals(quad_mod)^2)
+cat("MSE for Model:", mse_quad, "\n")

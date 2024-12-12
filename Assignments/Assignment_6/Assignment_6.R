@@ -7,7 +7,7 @@ data_6<-read.csv("/Users/bryan/OneDrive/Documents/BIOL_3100/Data_Course_BRYANT/A
 View(data_6)
 
 data_6_long <- pivot_longer(
-  data,
+  data_6,
   cols = starts_with("Hr_"),
   names_to = "Time",   
   values_to = "Absorbance"
