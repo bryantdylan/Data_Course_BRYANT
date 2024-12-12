@@ -1,0 +1,136 @@
+---
+title: "Petrology Research"
+author: "Dylan Bryant"
+date: "2024-12-02"
+output: html_document
+knitr:
+  opts_chunk:
+    warning: false
+    message: false
+---
+
+[Home](https://bryantdylan.github.io/)
+
+## Deformation-enhanced Diffusive Loss of Titanium in Quartz During Greenschist-facies Crystal-plastic Deformation, Wasatch Fault Zone, Utah.
+
+
+### RESEARCH QUESTION: 
+  Investigate the diffusion of titanium in Quartz grains from deformed mylonite from the Wasatch Fault zone to better understand the timescales and temperatures at which deformation processes occur.
+
+### INTRODUCTION
+
+Two sample were used for this project, one is a granitic sample from the Little Cottonwood Stock, an intrusive igneous body, the other is a mylonitic rock from the Wasatch Fault Shear zone taken near Alta, Utah.
+
+ 
+
+![Samples :  Protolith Granite and Deformed Mylonite](C:/Users/bryan/OneDrive/Desktop/bryantdylan.github.io/Research/EDS_images_samples_mylonite_protolith_LCS_WFZ.jpg)
+EDS maps of the two samples [Top=protolith Bottom= Mylonite] (Stearns et. al 2020)
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(leaflet)
+
+location_sample <- data.frame(
+  name = "Sample Location",
+  lat = 40.5888394,
+  lon = -111.6379793)
+
+
+leaflet(data = location_sample) %>%
+  addTiles() %>%  
+  addMarkers(
+    ~lon, ~lat,  
+    label = ~name,  
+    popup = ~paste0("<strong>", name, "</strong><br>Lat: ", lat, "<br>Lon: ", lon))
+
+```
+Cartoonized location map of the sample locations
+![Samples :  Location Cartoon](C:/Users/bryan/OneDrive/Desktop/bryantdylan.github.io/Research/Location_image.jpg)
+(Stearns et. al 2020)
+
+
+
+### METHODS
+Cathodoluminescence (CL) images were taken on a scanning electron microsope of quartz grains and used to verify if CL brightness could be used as a proxy for titanium concentrations.
+![Samples :  Location Cartoon](C:/Users/bryan/OneDrive/Desktop/bryantdylan.github.io/Research/gray_profile_example.jpg)
+CL image of the mylonitic sample at different scale. Red outline shows a single grain with a grayscale profile extraction.
+
+
+
+Five grayscale profiles were extracted from the protolith sample and calibrated with the measured Titanium to verify that the grayscales can act as a proxy for titanium concentrations to be used in diffusion modeling. 
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(ggpmisc)
+
+ima_cali<-read.csv("/Users/bryan/OneDrive/Documents/EPMA_data_R_practice.csv")
+ggplot(ima_cali)+
+  geom_point(aes(x=Grayscale,y=Ti_ppm, color=SAMPLE, group=SAMPLE), size=2)+
+  geom_smooth(aes(x = Grayscale, y = Ti_ppm, group=SAMPLE, color=SAMPLE),method = "lm", se = FALSE, size=1) +
+  scale_x_continuous(limits = c(0, 250))+
+  stat_poly_eq(aes(x = Grayscale, y = Ti_ppm, group=SAMPLE, color=SAMPLE, label = ..eq.label..), 
+               formula = y ~ x,
+               size=1.5,
+               parse = TRUE) +
+  stat_poly_eq(aes(x = Grayscale, y = Ti_ppm, label = paste("R^2 = ", ..rr.label..)), 
+               formula = y ~ x, 
+               parse = TRUE,
+               label.y = function(x) x + 0.1,
+               size=2,
+               color = "black") +
+  labs(x = "Grayscale", y = "Ti(ppm)", title = "Calibrate Grayscale to PPM : Protolith")+
+  theme_light()
+```
+
+Once it was verified that the CL brightness could be used as a proxy for titanium concentrations, the diffusion temperatures could be approximated using the Arrhenius equation.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+ggplot(ima_cali)+
+  geom_point(aes(x=Grayscale,y=Temp_C, color=Grayscale), size=2)+
+  geom_smooth(aes(x = Grayscale, y = Temp_C),method = "lm", se = FALSE, color='aquamarine4', size=0.5) +
+  scale_color_gradient(low = "black", high = "purple")+
+  facet_wrap(~SAMPLE, scales="free")+
+  stat_poly_eq(aes(x = Grayscale, y = Temp_C, label = ..eq.label..),size=2, 
+               formula = y ~ x, 
+               parse = TRUE) +
+  stat_poly_eq(aes(x = Grayscale, y = Temp_C, label = ..rr.label..),size=2, 
+               formula = y ~ x, 
+               parse = TRUE, 
+               label.y = 0.9)+
+  labs(x = "Grayscale", y = "Temp(C)", title = "Calibrate Grayscale to Temperature : Protolith")+
+  theme_light()
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+temp_dat<-read.csv("kerneldensity.csv")
+```
+
+### RESULTS
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+temp_dat$MS_01_temp <- as.numeric(temp_dat$MS_01_temp)
+temp_dat$NU_02_temp <- as.numeric(temp_dat$NU_02_temp)
+
+library(tidyr)
+temp_plot<- temp_dat %>%
+  select(MS_01_temp, NU_02_temp) %>%
+  pivot_longer(cols = everything(), names_to = "Sample", values_to = "Temperature") %>%
+  drop_na()
+
+ggplot(temp_plot, aes(x = Temperature, fill = Sample)) +
+  geom_density(alpha = 0.5, aes(y = ..count..)) +  
+  labs(
+    title = "KDE plot of Temperatures",
+    x = "Temperature",
+    y = "Number of Observations"
+  ) +
+  theme_minimal() +
+  scale_fill_manual(values = c("red", "royalblue"))
+```
+
+The kernel density plot shows that the temperatures of the titanium in the protolith and the mylonite are around 620 and 510 degrees celsius.
+
+This data provides a means to model diffusion profiles for the mylonite, assuming isothermal conditions, in order to understand the time scales at which the diffusion of titanium in quartz was happening during the crystal-plastic enhanced green-schist facies ductile deformation in the shear zone of the Wasatch Fault. 

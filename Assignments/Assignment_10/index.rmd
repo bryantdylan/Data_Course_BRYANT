@@ -1,0 +1,67 @@
+---
+title: "BIOL_3100"
+author: "Dylan Bryant"
+date: "2024-12-02"
+output: 
+  rmdformats::material
+---
+
+
+
+# [Home](https://bryantdylan.github.io/)
+# [Research](https://bryantdylan.github.io/Research/)
+
+
+
+# About Me
+## 
+## Dylan Bryant
+## UVU Student | Geology Major | 10811389@uvu.edu
+
+![Profile Pic](C:/Users/bryan/OneDrive/Desktop/bryantdylan.github.io/AboutMe/Profile_picture_DylanBryant.jpg){style="width: 300px; height: auto;"}
+
+I’m Dylan Bryant, a geology major at UVU on track to graduate Fall 2024.
+
+## Education
+- **Geology B.S.**  
+  Utah Valley University, 2021-2024
+  **GIS Certificate - In progress**  
+  Utah Valley University, 2022-
+
+## Research
+- **American Geophysical Union DEC. 2024**  
+  Deformation-enhanced diffusive loss of titanium in quartz during greenschist-facies crystal-plastic deformation, Wasatch Fault Zone, UT  
+  - Bryant, D.S, Karns, H.N, Stearns, M.A, Garber, J.D
+- **Utah Valley GIS Symposium, Sep 2024**  
+  A Rock Glacier Inventory of Utah  
+  - Karns, H.N, Bryant. D.S, Olson
+- **Utah Valley GIS Symposium, Sep 2024**
+- **Utah Geospatial Applications Symposium April 2024**
+  A Rock Glacier Inventory of Utah  
+  - Karns, H.N, Bryant. D.S, Olson
+- **Utah Conference for Undergraduate Research Feb 2023**  
+  Using Carbon and Nitrogen Stable Isotopes to Determine the Diet Composition of 
+Ground beetles (Coleoptera: Carabidae) in Provo Canyon, Utah  
+  - Karns, H., Bryant, D., Christensen, N., David Kirby, Sarah Marchant, Emmaline Saunders, Hannah Thomas, Alessandro Zanazzi, Dan Cavan, Daniele Ghiretti
+
+
+## Scholarships and Awards
+- **The John Keith and Lillian Y. Hayes Endowed Scholarship**
+- **UGA Field Camp Scholarship**
+- **URSCA Dissemination Grant**
+- **SAC Proposal Grant**
+- **Dean list recipient 2021-2024**
+
+## Titles
+- **Earth Science Student Association President**
+- **AGU Member**
+- **GSA Member**
+
+## Skills
+- **Programming Languages**: R; R Studio
+- **Software**: Microsoft Office Suite, Adobe Illustrator, ArcGIS Pro,QGIS, Matlab, IsoplotR,Google Earth Pro
+- **Research Skills** : Scanning electron microscope (BSE,SE,Cl,EDS), Optical microscopy,Stereonet, Lithologic mapping, Structural mapping, Petrology course (thermometry, geochronology), Isotope geochemistry research, GIS mapping 
+- **Soft Skills**: critical thinking, problem solving, co-operation, time management, independent work ethic, communication, public speaking, hard work ethic
+
+
+

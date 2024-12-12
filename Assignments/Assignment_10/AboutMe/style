@@ -1,0 +1,33 @@
+/* Change the background color */
+body {
+  background-color: #f4f4f9;
+}
+
+/* Change text color */
+h1, h2, h3, h4, h5, h6, p, li {
+  color: #333333;
+}
+
+/* Change link color */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Highlight sections (e.g., headings) */
+section {
+  border-left: 4px solid #007bff;
+  padding-left: 10px;
+}
+
+/* Customize resume header */
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
